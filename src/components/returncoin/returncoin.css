@@ -1,0 +1,78 @@
+.returncoin-item{
+    padding-top: 4rem;
+    background: #f8f8f8;
+    padding-bottom: 4rem;
+    min-height: 100%;
+}
+.coin-card{
+    background: #ffffff;
+    padding: 1.5rem 1rem;
+}
+
+.card-unit{
+    color: #cccccc;
+    padding-bottom: 0.5rem;
+}
+
+.card-item{
+    background: #a0a0a0;
+    background: linear-gradient(to right, #cacaca, #a0a0a0);
+    box-shadow: 0.1rem 0.2rem 0.3rem rgba(0,0,0,0.2);
+    padding: 1rem;
+}
+.card-item.color{
+    background: #5288ea;
+    background: linear-gradient(to right, #2de5fd, #5288ea);
+}
+
+.card-item ul{
+    display: flex;
+    padding: 1.5rem 0 0;
+}
+.card-item ul:first-child{
+    padding-top: 0
+}
+
+.card-item li{
+    float: left;
+    width: 26%;
+}
+.card-item li:first-child{
+    width: 48%;
+}
+.card-item li:nth-child(2){
+    width: 26%;
+}
+.card-item li:last-child{
+    padding-left: 1%;
+    width: 25%;
+}
+
+.card-item li span{
+    display: block;
+}
+.card-item li .info{
+    font-size: 1.4rem;
+    color: #ffffff;
+    padding-top: 0.5rem;
+}
+
+.card-item li .info i{
+    font-style: normal;
+    color: #444444;
+    font-size: 1.2rem;
+    padding-left: 0.3rem;
+}
+
+.return-btn{
+    background: #ffffff;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 0.5rem 0;
+    border-radius: 1rem;
+    color: #5288ea
+}
+
+.return-btn.hide{
+    display: none;
+}

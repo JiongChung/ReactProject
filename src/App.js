@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
-import logo from './assets/images/logo.svg';
-import './assets/css/App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import './assets/css/style.css';
 
-import Login from './components/login/Login';
+import Home from './components/home/Home';
+import ReturnCoin from './components/returncoin/ReturnCoin';
+import User from './components/user/User';
+import BorrowRecord from './components/returncoin/BorrowRecord';
+import FooterMenu from './components/footer/FooterMenu';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Login />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <Router>
+                <div>    
+                    <Route exact path="/" component={Home} />
+                    <Route path="/returncoin" component={ReturnCoin} />    
+                    <Route path="/user" component={User} /> 
+                    <Route path="/borrowrecord" component={BorrowRecord} />    
+                    <FooterMenu />      
+                </div>
+            </Router>
+        );
+    }
 }
 
 export default App;

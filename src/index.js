@@ -1,8 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter ,Route ,Switch } from 'react-router-dom';
 // import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Register from './components/register/Register';
+import Login from './components/login/Login';
+import Forgetpassword from './components/forgetpassword/Forgetpassword';
+import ReturnCoin from './components/returncoin/ReturnCoin';
+import User from './components/user/User';
+import BorrowRecord from './components/returncoin/BorrowRecord';
+
+ReactDOM.render(
+    <div>
+        <BrowserRouter>
+            <Switch>
+                <Route path='/' component={ App } exact />
+                <Route path='/register' component={ Register } />
+                <Route path='/login' component={ Login } />
+                <Route path='/forget' component={ Forgetpassword } />
+                <Route path='/returncoin' component={ ReturnCoin } />
+                <Route path='/user' component={ User } />
+                <Route path='/borrowrecord' component={ BorrowRecord } />
+            </Switch>
+        </BrowserRouter>
+    </div>
+    , document.getElementById('root'));
 registerServiceWorker();

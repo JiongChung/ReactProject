@@ -1,0 +1,91 @@
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+:after, :before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}	
+html{ height:100%;font-size:62.5%;}
+body{ height:100%;padding:0;margin:0;line-height:1;font-size:1.2rem;font-family:"微软雅黑",Helvetica,"宋体",ncursive,Arial;-webkit-text-size-adjust:none;color:#444444;background:#f8f8f8;}
+body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,input,textarea {padding:0;margin:0;}
+th{ text-align:left;}
+select,input,textarea{font-family:Arial;outline:none; outline:none;}
+img,input{ border: 0;}
+ol,ul {list-style:none;}
+li{ vertical-align:top;}
+h1,h2,h3,h4,h5,h6 {font-size: 100%;font-weight: normal}
+
+a{
+    text-decoration: none;
+    color: #444444;
+}
+a:hover{
+    color: #5288ea
+}
+
+@media only screen and (min-width: 375px) {
+	html {font-size: 75% !important;}
+}
+@media only screen and (min-width: 560px) {
+	html {font-size: 87.5% !important;}
+}
+@media only screen and (min-width: 640px) {
+	html {font-size: 100% !important;}
+}
+
+::-webkit-input-placeholder {
+    color:#bbb;
+}
+:-moz-placeholder {
+   color:#bbb;
+}
+::-moz-placeholder {
+   color:#bbb;
+}
+:-ms-input-placeholder {
+   color:#bbb;
+}
+
+input,button{
+    outline:0px;
+    -webkit-appearance:none;
+    background: none;
+    border:none;
+}
+
+/*去掉input自动补全后的黄色样式*/
+input:-webkit-autofill, 
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-transition-delay: 99999s;
+    -webkit-transition: color 99999s ease-out, 
+    background-color 99999s ease-out;
+}
+
+.btn-loading{
+    background: #f7f7f7 url(../images/loading_3.gif) no-repeat center center !important;
+    text-indent: -9999px;
+}
+
+.foot-menu{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    height: 4rem;
+}
+.foot-menu ul{
+    display: flex;
+}
+.foot-menu li{
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    line-height: 4rem;
+    font-size: 1.4rem;
+}
+
+#root,
+#root div:only-child{
+    height: 100%;
+}
+
+.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }
+.clearfix { *zoom:1; }

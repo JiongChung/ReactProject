@@ -1,0 +1,117 @@
+.login-body{
+    background: #5386e9;
+    background:-webkit-linear-gradient(#2ce8fe,#5386e9); 
+    background:-moz-linear-gradient(#2ce8fe,#5386e9); 
+    background:-ms-linear-gradient(#2ce8fe,#5386e9); 
+    background:-o-linear-gradient(#2ce8fe,#5386e9); 
+    background:linear-gradient(#2ce8fe,#5386e9); 
+    height: 100%;
+    overflow: hidden;
+}
+
+.logo{
+    width: 5rem;
+    height: 11rem;
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    padding: 3rem 0;
+}
+
+.fixed-icon{
+    background: url(../images/denglu_bg.svg) no-repeat;
+    position: fixed;
+    right: 0;
+    bottom: -4rem;
+    width: 30rem;
+    height: 30rem;
+    opacity: 0.05;
+}
+
+.login-item{
+    position: relative;
+    margin: 0 3rem 3rem;
+    padding: 2rem  1.5rem;
+    background: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+.login-item h1{
+    text-align: center;
+    color: #4bb8ef;
+    font-size: 1.8rem;
+    font-weight: normal;
+    padding-bottom: 2rem;
+}
+
+.inputbox li{
+    position: relative;
+}
+
+.inputbox li .code-btn{
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    right: 1rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    margin: auto;
+    color: #4a75ff;
+    cursor: pointer;
+}
+
+.inputbox li + li {
+    margin-top: 2rem;
+}
+
+.inputbox .forget{
+    box-shadow: none;
+    text-align: right;
+    margin-top: 1rem;
+    color: #cccccc;
+}
+
+.inputbox li input,
+.inputbox li button{
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+    border-radius: 0.3rem;
+}
+
+.inputbox .forget,
+.inputbox .btn{
+    box-shadow: none;
+}
+
+.inputbox li .login{
+    background: #5288ea;
+    background: linear-gradient(to right, #2de5fd, #5288ea);
+    color: #ffffff;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.inputbox li input[disabled]{
+    background: #cccccc
+}
+
+.inputbox li .register{
+    border:solid 1px #4bb8ef;
+    border-radius: 0.5rem;
+    color: #4bb8ef;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    padding: 1rem;
+}
+
+.validation-error{
+    display: block;
+    color: #ff0000;
+    margin-top: 1rem;
+}

@@ -1,11 +1,11 @@
 import React from 'react';
 import CommonService from '../../service/CommonService'; 
-import {withRouter} from "react-router-dom";
 import '../../assets/css/login.css';
+import {withRouter} from "react-router-dom";
 
-class Login extends React.Component {
+class Register extends React.Component {
     constructor(props){
-        super(props);        
+        super(props);
 
         this.state = {
             username: {
@@ -18,9 +18,42 @@ class Login extends React.Component {
                 value: '',
                 error: ''
             },
-            addloading: false,
+            phonecode: {
+                valid: false,
+                value: '',
+                error: ''
+            },
             isSaveValid: true,
-        };
+            sendPhonecode: true,
+            addloading: false
+        }
+    }
+
+    getCode = (e)=> {
+        if(!CommonService.zValidate.phone(this.state.username.value)){
+            this.setState({
+                username: {valid: false,error: '手机格式不正确'}
+            });
+        }else{
+            if(this.state.sendPhonecode){
+                this.sendPhoneCode(e.target);
+            }else{
+                var name = e.target.className.split(' ');
+                if(name.indexOf('loading') === -1){
+                    this.setState({
+                        sendPhonecode: true
+                    });
+                    this.sendPhoneCode(e.target);
+                }
+            }
+        }
+    }
+
+    sendPhoneCode(obj){
+        var status = CommonService.getPhoneCodeNow(obj, 60 ,true,'获取验证码','重新发送');
+        this.setState({
+            sendPhonecode: status
+        });
     }
 
     handleValueChange(field, value) {
@@ -32,6 +65,16 @@ class Login extends React.Component {
             }else{
                 this.setState({
                     [field]: {valid: true,value: value,error:''}
+                });
+            }
+        }else if(field === 'phonecode'){
+            if(value.length > 5){
+                this.setState({
+                    [field]: {valid: true,value: value,error:''}
+                });
+            }else{
+                this.setState({
+                    [field]: {valid: false,value: value,error:''}
                 });
             }
         }else if(field === 'password'){
@@ -51,9 +94,7 @@ class Login extends React.Component {
     }
 
     checkForm = ()=> {
-        console.log(this.state.username.valid);
-        console.log(this.state.password.valid);
-        if(this.state.username.valid && this.state.password.valid){
+        if(this.state.username.valid && this.state.password.valid && this.state.phonecode.valid){
             this.setState({
                 isSaveValid: false
             });
@@ -64,12 +105,8 @@ class Login extends React.Component {
         }
     }
 
-    register = ()=> {
-        this.props.history.push('/register');
-    }
-
-    forget = ()=> {
-        this.props.history.push('/forget');
+    login = ()=> {
+        this.props.history.push('/login');
     }
 
     save = (e)=> {
@@ -92,7 +129,7 @@ class Login extends React.Component {
             <div className="login-body">
                 <img className="logo" alt="" src={require('../../assets/images/logo_disabled.svg')} />
                 <div className="login-item">
-                    <h1>欢迎登录借币宝</h1>
+                    <h1>欢迎注册借币宝</h1>
                     <form onSubmit={this.save}>
                         <ul className="inputbox">
                             <li>
@@ -111,14 +148,19 @@ class Login extends React.Component {
                                     onKeyUp={(e) => this.handleValueChange('password', e.target.value)} />
                                 {!password.valid && <span className="validation-error">{password.error}</span>}
                             </li>
-                            <li className="forget">
-                                <span onClick={this.forget}>忘记密码</span>
+                            <li>
+                                <input 
+                                    type="number" 
+                                    placeholder="请输入短信验证码" 
+                                    name="phonecode" 
+                                    onKeyUp={(e) => this.handleValueChange('phonecode', e.target.value)} />
+                                <span className="code-btn" onClick={this.getCode}>获取验证码</span>
                             </li>
                             <li className="btn">
-                                <input className={this.state.addloading ? 'btn-loading login' : 'login'}  disabled={this.state.isSaveValid} value="登录" type="submit" />   
+                                <input className={this.state.addloading ? 'btn-loading login' : 'login'}  disabled={this.state.isSaveValid} value="注册即领500USDT" type="submit" />                                
                             </li>
                             <li className="btn">
-                                <span className="register" onClick={this.register}>注册</span>
+                                <span className="register" onClick={this.login}>登录</span>
                             </li>
                         </ul>
                     </form>
@@ -129,4 +171,4 @@ class Login extends React.Component {
     }
 }
 
-export default withRouter(Login);
+export default withRouter(Register);
