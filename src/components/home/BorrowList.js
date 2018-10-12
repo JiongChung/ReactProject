@@ -7,6 +7,7 @@ class BorrowList extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            borrowlist: [],
             data: [
                 {
                     phone: 13412345678,
@@ -33,11 +34,53 @@ class BorrowList extends React.Component {
                     date: '2018-10-9 12:12:12',
                     number: 1500
                 }
+            ],
+            list: [
+                {
+                    period: 4,
+                    qty: 10100,
+                    data: '2018-10-11',
+                    status: true
+                },
+                {
+                    period: 3,
+                    qty: 3000,
+                    data: '2018-9-9',
+                    status: true
+                },
+                {
+                    period: 2,
+                    qty: 600,
+                    data: '2018-8-1',
+                    status: true
+                },
+                {
+                    period: 1,
+                    qty: 60000,
+                    data: '2018-7-12',
+                    status: false
+                }
             ]
         };
     }
     componentDidMount(){
-        ScrollService.init(document.getElementById('scrollBox'),document.getElementById('scrollBox').getElementsByTagName('li')[0].offsetHeight);
+        if(window.localStorage.getItem('borrowlist') === null){
+            window.localStorage.setItem('borrowlist',JSON.stringify(this.state.data));
+        }
+        if(window.localStorage.getItem('returnlist') === null){
+            window.localStorage.setItem('returnlist',JSON.stringify(this.state.list));
+        }
+        this.setState({
+            list: JSON.parse(window.localStorage.getItem('returnlist'))
+        })
+        this.setState({
+            data: JSON.parse(window.localStorage.getItem('borrowlist'))
+        })
+        
+        setTimeout(() => {
+            ScrollService.init(document.getElementById('scrollBox'),document.getElementById('scrollBox').getElementsByTagName('li')[0].offsetHeight);
+        },100);
+        
     }
 
     render(){

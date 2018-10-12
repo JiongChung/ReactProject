@@ -51,8 +51,6 @@ class Login extends React.Component {
     }
 
     checkForm = ()=> {
-        console.log(this.state.username.valid);
-        console.log(this.state.password.valid);
         if(this.state.username.valid && this.state.password.valid){
             this.setState({
                 isSaveValid: false
@@ -78,11 +76,23 @@ class Login extends React.Component {
         this.setState({
             addloading: true
         });
-
+        
         setTimeout(() => {
             this.setState({
                 addloading: false
             });
+            if(window.localStorage.getItem('__ReactUser') !== null){
+                let useritem = JSON.parse(window.localStorage.getItem('__ReactUser'));
+                if(this.state.username.value === useritem.username && this.state.password.value === useritem.password){
+                    window.localStorage.setItem('__login','yes');
+                    alert('登录成功');
+                    this.props.history.push('/');
+                }else{
+                    alert('帐号与密码不正确');
+                }
+            }else{
+                alert('该用户不存在，请注册一个帐号');
+            }
         },2000);
     }
 

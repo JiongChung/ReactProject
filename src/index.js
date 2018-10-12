@@ -11,6 +11,7 @@ import Forgetpassword from './components/forgetpassword/Forgetpassword';
 import ReturnCoin from './components/returncoin/ReturnCoin';
 import User from './components/user/User';
 import BorrowRecord from './components/returncoin/BorrowRecord';
+import Apply from './components/apply/Apply';
 
 ReactDOM.render(
     <div>
@@ -23,6 +24,7 @@ ReactDOM.render(
                 <Route path='/returncoin' component={ ReturnCoin } />
                 <Route path='/user' component={ User } />
                 <Route path='/borrowrecord' component={ BorrowRecord } />
+                <Route path='/apply' component={ Apply } />
             </Switch>
         </BrowserRouter>
     </div>

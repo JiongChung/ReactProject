@@ -8,6 +8,7 @@
     background: linear-gradient(to right, #2de5fd, #5288ea);
     color: #ffffff;
     text-align: center;
+    z-index: 99;
 }
 .header span{
     line-height: 4rem;
@@ -29,7 +30,7 @@
 
 .back:before{
     position: absolute;
-    top: 0.5rem;
+    top: 1rem;
     left: 1.5rem;
     display: block;
     content: "";
@@ -44,7 +45,7 @@
 }
 .back:after{
     position: absolute;
-    top: 1.85rem;
+    top: 2.35rem;
     left: 1rem;
     display: block;
     content: "";

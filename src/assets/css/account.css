@@ -26,6 +26,9 @@
     font-size: 1.6rem;
     cursor: pointer;
 }
+.account-item .borrow button a{
+    color: #ffffff;
+}
 .account-item .invite{
     padding: 1rem 1.5rem;
 }

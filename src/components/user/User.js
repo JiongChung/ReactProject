@@ -11,8 +11,29 @@ class User extends React.Component {
         this.state = {
             title: '我的',
             showBack: false,
-            phone: '13430386194'
+            phone: '13800138000',
+            login: true
         };
+    }
+
+    componentDidMount(){
+        setTimeout(() => { 
+            let userItem = JSON.parse(window.localStorage.getItem('__ReactUser'));
+            this.setState({
+                phone: userItem.username
+            })
+        },100);
+    }
+
+    logout = ()=> {
+        window.localStorage.removeItem('__login');
+        this.setState({
+            login: false
+        })
+        if(window.localStorage.getItem('__login') === null){
+            this.props.history.push('/login');
+            window.location.href = window.location.href;
+        }
     }
 
     render(){
@@ -40,7 +61,7 @@ class User extends React.Component {
                             <li>邀请好友</li>
                         </ul>
                     </div>
-                    <div className="logout">
+                    <div className="logout" onClick={this.logout}>
                         退出登录
                     </div>
                     <FooterMenu />

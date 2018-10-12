@@ -7,79 +7,40 @@ class ReturnList extends React.Component {
         this.state = {
             list: [
                 {
-                    period: 1,
+                    period: 4,
                     qty: 10100,
-                    data: '2018-8-12',
-                    status: true
-                },
-                {
-                    period: 2,
-                    qty: 3000,
-                    data: '2018-12-12',
+                    data: '2018-10-11',
                     status: true
                 },
                 {
                     period: 3,
-                    qty: 600,
-                    data: '2018-7-12',
-                    status: true
-                },
-                {
-                    period: 4,
-                    qty: 60000,
-                    data: '2018-9-12',
-                    status: false
-                },
-                {
-                    period: 1,
-                    qty: 10100,
-                    data: '2018-8-12',
+                    qty: 3000,
+                    data: '2018-9-9',
                     status: true
                 },
                 {
                     period: 2,
-                    qty: 3000,
-                    data: '2018-12-12',
-                    status: true
-                },
-                {
-                    period: 3,
                     qty: 600,
-                    data: '2018-7-12',
+                    data: '2018-8-1',
                     status: true
-                },
-                {
-                    period: 4,
-                    qty: 60000,
-                    data: '2018-9-12',
-                    status: false
                 },
                 {
                     period: 1,
-                    qty: 10100,
-                    data: '2018-8-12',
-                    status: true
-                },
-                {
-                    period: 2,
-                    qty: 3000,
-                    data: '2018-12-12',
-                    status: true
-                },
-                {
-                    period: 3,
-                    qty: 600,
-                    data: '2018-7-12',
-                    status: true
-                },
-                {
-                    period: 4,
                     qty: 60000,
-                    data: '2018-9-12',
+                    data: '2018-7-12',
                     status: false
                 }
             ]
         };
+    }
+
+    componentDidMount(){
+        if(window.localStorage.getItem('returnlist') === null){
+            window.localStorage.setItem('returnlist',JSON.stringify(this.state.list));
+        }
+        this.setState({
+            list: JSON.parse(window.localStorage.getItem('returnlist'))
+        })
     }
 
     render(){

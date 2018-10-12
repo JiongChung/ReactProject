@@ -25,8 +25,19 @@ class Register extends React.Component {
             },
             isSaveValid: true,
             sendPhonecode: true,
-            addloading: false
+            addloading: false,
+            openPhoneCode: false
         }
+    }
+
+    componentDidMount(){
+        setTimeout(() => {
+            if(!this.state.openPhoneCode){
+                this.setState({
+                    phonecode: {valid: true}
+                })
+            }
+        },0);
     }
 
     getCode = (e)=> {
@@ -115,11 +126,27 @@ class Register extends React.Component {
         this.setState({
             addloading: true
         });
+        
+        let useritem = {
+            username: this.state.username.value,
+            password: this.state.password.value
+        }
 
+        if(window.localStorage.getItem('__ReactUser') !== null){
+            let _username = JSON.parse(window.localStorage.getItem('__ReactUser')).username;
+            if(this.state.username.value === _username){
+                alert('该用户已经存在，请更新手机号码');
+                return false;
+            }
+        }
+        
         setTimeout(() => {
             this.setState({
                 addloading: false
             });
+            window.localStorage.setItem('__ReactUser',JSON.stringify(useritem));
+            alert('注册成功');
+            this.login();
         },2000);
     }
 
@@ -148,7 +175,7 @@ class Register extends React.Component {
                                     onKeyUp={(e) => this.handleValueChange('password', e.target.value)} />
                                 {!password.valid && <span className="validation-error">{password.error}</span>}
                             </li>
-                            <li>
+                            <li className={this.state.openPhoneCode ? '' : 'hide'}>
                                 <input 
                                     type="number" 
                                     placeholder="请输入短信验证码" 

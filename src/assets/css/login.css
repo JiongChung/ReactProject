@@ -99,7 +99,9 @@
 .inputbox li input[disabled]{
     background: #cccccc
 }
-
+.inputbox li.hide{
+    display: none
+}
 .inputbox li .register{
     border:solid 1px #4bb8ef;
     border-radius: 0.5rem;

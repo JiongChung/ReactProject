@@ -83,4 +83,8 @@ export default{
         }
         return result;
     },
+
+    integerMultiple: function(multiple, value){
+        return (value < multiple) ? false : ((value % multiple === 0) ? true : false);
+    }
 }
